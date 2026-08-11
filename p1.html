@@ -1,132 +1,274 @@
+```html
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Join Us</title>
 
+
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
         }
+
 
         body {
+
             min-height: 100vh;
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             padding: 20px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #667eea,
+                    #764ba2
+                );
+
+            font-family: Arial, sans-serif;
+
         }
+
 
         .container {
+
             width: 100%;
+
             max-width: 550px;
+
             background: white;
+
             padding: 35px;
+
             border-radius: 18px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.2);
+
         }
 
-        h1 {
-            text-align: center;
-            margin-bottom: 8px;
-            color: #333;
-        }
 
-        .subtitle {
+        .heading {
+
             text-align: center;
-            color: #777;
+
             margin-bottom: 30px;
+
         }
+
+
+        .heading h1 {
+
+            color: #333;
+
+            font-size: 32px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .heading p {
+
+            color: #777;
+
+            font-size: 15px;
+
+        }
+
 
         .form-group {
+
             margin-bottom: 20px;
+
         }
 
+
         label {
+
             display: block;
+
             margin-bottom: 7px;
+
             font-weight: bold;
+
             color: #333;
+
         }
+
 
         input,
         textarea {
+
             width: 100%;
-            padding: 13px;
+
+            padding: 13px 15px;
+
             border: 1px solid #ddd;
+
             border-radius: 8px;
+
             font-size: 15px;
+
             outline: none;
+
         }
+
 
         input:focus,
         textarea:focus {
+
             border-color: #667eea;
+
         }
+
 
         textarea {
+
             height: 120px;
+
             resize: vertical;
+
         }
+
 
         button {
+
             width: 100%;
+
             padding: 14px;
+
             border: none;
+
             border-radius: 8px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #667eea,
+                    #764ba2
+                );
+
             color: white;
+
             font-size: 16px;
+
             font-weight: bold;
+
             cursor: pointer;
+
         }
+
 
         button:disabled {
+
             opacity: 0.6;
+
             cursor: not-allowed;
+
         }
+
 
         #message {
-            margin-top: 18px;
-            padding: 12px;
-            text-align: center;
-            border-radius: 8px;
+
             display: none;
+
+            margin-top: 18px;
+
+            padding: 13px;
+
+            border-radius: 8px;
+
+            text-align: center;
+
+            font-size: 14px;
+
         }
+
 
         .success {
+
             display: block !important;
+
             background: #d4edda;
+
             color: #155724;
+
         }
 
+
         .error {
+
             display: block !important;
+
             background: #f8d7da;
+
             color: #721c24;
+
         }
+
+
+        .already {
+
+            display: block !important;
+
+            background: #fff3cd;
+
+            color: #856404;
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-    <h1>Join Us</h1>
 
-    <p class="subtitle">
-        Fill in your details to join our community.
-    </p>
+    <div class="heading">
+
+        <h1>Join Us</h1>
+
+        <p>
+            Fill in your details to join our community.
+        </p>
+
+    </div>
+
 
     <form id="joinForm">
 
+
+        <!-- NAME -->
+
         <div class="form-group">
-            <label>Full Name</label>
+
+            <label for="name">
+                Full Name
+            </label>
 
             <input
                 type="text"
@@ -134,21 +276,35 @@
                 placeholder="Enter your full name"
                 required
             >
+
         </div>
 
+
+        <!-- EMAIL -->
+
         <div class="form-group">
-            <label>Email Address</label>
+
+            <label for="email">
+                Email Address
+            </label>
 
             <input
                 type="email"
                 id="email"
-                placeholder="Enter your email"
+                placeholder="Enter your email address"
                 required
             >
+
         </div>
 
+
+        <!-- MOBILE -->
+
         <div class="form-group">
-            <label>Mobile Number</label>
+
+            <label for="mobile">
+                Mobile Number
+            </label>
 
             <input
                 type="tel"
@@ -158,120 +314,363 @@
                 pattern="[0-9]{10}"
                 required
             >
+
         </div>
 
+
+        <!-- REASON -->
+
         <div class="form-group">
-            <label>Reason for Joining Us</label>
+
+            <label for="reason">
+                Reason for Joining Us
+            </label>
 
             <textarea
                 id="reason"
                 placeholder="Tell us why you want to join us..."
                 required
             ></textarea>
+
         </div>
 
-        <button type="submit" id="submitBtn">
+
+        <!-- SUBMIT -->
+
+        <button
+            type="submit"
+            id="submitButton"
+        >
             Submit Application
         </button>
 
+
+        <!-- MESSAGE -->
+
         <div id="message"></div>
 
+
     </form>
+
 
 </div>
 
 
 <script>
 
-    // ============================================
-    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL
-    // ============================================
 
-    const SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbyg2L-lgpy3IHEQoG_wEFPCB8Q53CXwoiRxSmFh3g2IFFvFHSJDT415tJBqyg1biFc/exec";
+// =====================================================
+// PUT YOUR APPS SCRIPT WEB APP URL HERE
+// =====================================================
 
-
-    const form = document.getElementById("joinForm");
-
-    const submitBtn = document.getElementById("submitBtn");
-
-    const message = document.getElementById("message");
+const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbyg2L-lgpy3IHEQoG_wEFPCB8Q53CXwoiRxSmFh3g2IFFvFHSJDT415tJBqyg1biFc/exec";
 
 
-    form.addEventListener("submit", async function(e) {
+// =====================================================
+// ELEMENTS
+// =====================================================
 
-        e.preventDefault();
+const form =
+    document.getElementById("joinForm");
 
-        submitBtn.disabled = true;
+const submitButton =
+    document.getElementById("submitButton");
 
-        submitBtn.innerText = "Submitting...";
-
-        message.className = "";
-
-        message.style.display = "none";
+const message =
+    document.getElementById("message");
 
 
-        const data = {
+// =====================================================
+// SHOW MESSAGE
+// =====================================================
 
-            name: document.getElementById("name").value.trim(),
+function showMessage(
+    text,
+    type
+) {
 
-            email: document.getElementById("email").value.trim(),
+    message.innerText = text;
 
-            mobile: document.getElementById("mobile").value.trim(),
+    message.className = type;
 
-            reason: document.getElementById("reason").value.trim()
+    message.style.display = "block";
 
-        };
+}
+
+
+// =====================================================
+// CHECK EMAIL FIRST
+// =====================================================
+
+async function checkEmail(email) {
+
+    const checkURL =
+        SCRIPT_URL +
+        "?email=" +
+        encodeURIComponent(email);
+
+
+    const response =
+        await fetch(checkURL);
+
+
+    const result =
+        await response.json();
+
+
+    return result;
+
+}
+
+
+// =====================================================
+// FORM SUBMIT
+// =====================================================
+
+form.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        // ---------------------------------------------
+        // GET VALUES
+        // ---------------------------------------------
+
+        const name =
+            document
+                .getElementById("name")
+                .value
+                .trim();
+
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+        const mobile =
+            document
+                .getElementById("mobile")
+                .value
+                .trim();
+
+
+        const reason =
+            document
+                .getElementById("reason")
+                .value
+                .trim();
+
+
+        // ---------------------------------------------
+        // BUTTON
+        // ---------------------------------------------
+
+        submitButton.disabled = true;
+
+        submitButton.innerText =
+            "Checking email...";
+
+
+        message.style.display =
+            "none";
 
 
         try {
 
-            const response = await fetch(SCRIPT_URL, {
 
-                method: "POST",
+            // =========================================
+            // STEP 1: CHECK EMAIL
+            // =========================================
 
-                mode: "no-cors",
-
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-
-                body: new URLSearchParams(data)
-
-            });
+            const checkResult =
+                await checkEmail(email);
 
 
-            message.className = "success";
+            // -----------------------------------------
+            // EMAIL ALREADY EXISTS
+            // -----------------------------------------
 
-            message.innerText =
-                "Thank you! Your application has been submitted successfully. Please check your email.";
+            if (
+                checkResult.alreadySubmitted === true
+            ) {
 
-            message.style.display = "block";
+                showMessage(
+                    "Already submitted the form with this email address.",
+                    "already"
+                );
 
-            form.reset();
+
+                submitButton.disabled =
+                    false;
+
+
+                submitButton.innerText =
+                    "Submit Application";
+
+
+                return;
+
+            }
+
+
+            // =========================================
+            // STEP 2: SUBMIT FORM
+            // =========================================
+
+            submitButton.innerText =
+                "Submitting...";
+
+
+            const formData =
+                new URLSearchParams();
+
+
+            formData.append(
+                "name",
+                name
+            );
+
+
+            formData.append(
+                "email",
+                email
+            );
+
+
+            formData.append(
+                "mobile",
+                mobile
+            );
+
+
+            formData.append(
+                "reason",
+                reason
+            );
+
+
+            // -----------------------------------------
+            // SEND TO APPS SCRIPT
+            // -----------------------------------------
+
+            const response =
+                await fetch(
+                    SCRIPT_URL,
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/x-www-form-urlencoded"
+
+                        },
+
+                        body:
+                            formData.toString()
+
+                    }
+                );
+
+
+            const result =
+                await response.json();
+
+
+            // =========================================
+            // DUPLICATE
+            // =========================================
+
+            if (
+                result.message &&
+                result.message.includes(
+                    "Already submitted"
+                )
+            ) {
+
+                showMessage(
+                    "Already submitted the form with this email address.",
+                    "already"
+                );
+
+
+                return;
+
+            }
+
+
+            // =========================================
+            // SUCCESS
+            // =========================================
+
+            if (
+                result.success === true
+            ) {
+
+                showMessage(
+                    "Form submitted successfully! A confirmation email has been sent to you.",
+                    "success"
+                );
+
+
+                form.reset();
+
+
+                return;
+
+            }
+
+
+            // =========================================
+            // ERROR
+            // =========================================
+
+            showMessage(
+                result.message ||
+                "Something went wrong. Please try again.",
+                "error"
+            );
 
 
         } catch (error) {
 
+
             console.error(error);
 
-            message.className = "error";
 
-            message.innerText =
-                "Something went wrong. Please try again.";
+            showMessage(
+                "Unable to connect to the server. Please try again.",
+                "error"
+            );
 
-            message.style.display = "block";
+
+        } finally {
+
+
+            submitButton.disabled =
+                false;
+
+
+            submitButton.innerText =
+                "Submit Application";
 
         }
 
-
-        submitBtn.disabled = false;
-
-        submitBtn.innerText = "Submit Application";
-
-    });
+    }
+);
 
 </script>
 
+
 </body>
+
 </html>
+```
