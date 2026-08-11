@@ -43,7 +43,10 @@
                     #764ba2
                 );
 
-            font-family: Arial, sans-serif;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
         }
 
@@ -54,7 +57,7 @@
 
             max-width: 550px;
 
-            background: white;
+            background: #ffffff;
 
             padding: 35px;
 
@@ -62,7 +65,7 @@
 
             box-shadow:
                 0 15px 40px
-                rgba(0,0,0,0.2);
+                rgba(0, 0, 0, 0.20);
 
         }
 
@@ -78,9 +81,9 @@
 
         .heading h1 {
 
-            color: #333;
-
             font-size: 32px;
+
+            color: #333333;
 
             margin-bottom: 8px;
 
@@ -89,9 +92,9 @@
 
         .heading p {
 
-            color: #777;
-
             font-size: 15px;
+
+            color: #777777;
 
         }
 
@@ -109,9 +112,11 @@
 
             margin-bottom: 7px;
 
-            font-weight: bold;
+            font-size: 15px;
 
-            color: #333;
+            font-weight: 600;
+
+            color: #333333;
 
         }
 
@@ -123,13 +128,15 @@
 
             padding: 13px 15px;
 
-            border: 1px solid #ddd;
+            border: 1px solid #dddddd;
 
             border-radius: 8px;
 
+            outline: none;
+
             font-size: 15px;
 
-            outline: none;
+            transition: 0.3s;
 
         }
 
@@ -138,6 +145,10 @@
         textarea:focus {
 
             border-color: #667eea;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(102, 126, 234, 0.10);
 
         }
 
@@ -168,13 +179,26 @@
                     #764ba2
                 );
 
-            color: white;
+            color: #ffffff;
 
             font-size: 16px;
 
             font-weight: bold;
 
             cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(102, 126, 234, 0.30);
 
         }
 
@@ -184,6 +208,8 @@
             opacity: 0.6;
 
             cursor: not-allowed;
+
+            transform: none;
 
         }
 
@@ -201,6 +227,8 @@
             text-align: center;
 
             font-size: 14px;
+
+            line-height: 1.5;
 
         }
 
@@ -235,6 +263,42 @@
 
             color: #856404;
 
+            border: 1px solid #ffeeba;
+
+        }
+
+
+        /* Hidden iframe used to communicate
+           with Google Apps Script */
+
+        #responseFrame {
+
+            display: none;
+
+            width: 0;
+
+            height: 0;
+
+            border: 0;
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .container {
+
+                padding: 25px 20px;
+
+            }
+
+
+            .heading h1 {
+
+                font-size: 27px;
+
+            }
+
         }
 
     </style>
@@ -245,429 +309,319 @@
 <body>
 
 
-<div class="container">
+    <div class="container">
 
 
-    <div class="heading">
+        <div class="heading">
 
-        <h1>Join Us</h1>
+            <h1>Join Us</h1>
 
-        <p>
-            Fill in your details to join our community.
-        </p>
+            <p>
+                Fill in your details to become
+                a part of our community.
+            </p>
+
+        </div>
+
+
+        <!-- =========================================
+             JOIN FORM
+             ========================================= -->
+
+        <form
+            id="joinForm"
+            method="POST"
+            target="responseFrame"
+        >
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email address"
+                    required
+                >
+
+            </div>
+
+
+            <!-- MOBILE -->
+
+            <div class="form-group">
+
+                <label for="mobile">
+                    Mobile Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    placeholder="Enter 10 digit mobile number"
+                    maxlength="10"
+                    pattern="[0-9]{10}"
+                    inputmode="numeric"
+                    required
+                >
+
+            </div>
+
+
+            <!-- REASON -->
+
+            <div class="form-group">
+
+                <label for="reason">
+                    Reason for Joining Us
+                </label>
+
+                <textarea
+                    id="reason"
+                    name="reason"
+                    placeholder="Tell us why you want to join us..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <!-- SUBMIT BUTTON -->
+
+            <button
+                type="submit"
+                id="submitButton"
+            >
+
+                Submit Application
+
+            </button>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="message"
+            ></div>
+
+
+        </form>
+
+
+        <!-- =========================================
+             HIDDEN IFRAME
+
+             Apps Script sends its response here.
+             Code.gs then sends the result to this
+             external webpage using postMessage().
+             ========================================= -->
+
+        <iframe
+            name="responseFrame"
+            id="responseFrame"
+        ></iframe>
+
 
     </div>
 
 
-    <form id="joinForm">
+    <script>
 
 
-        <!-- NAME -->
+        // =================================================
+        // YOUR GOOGLE APPS SCRIPT WEB APP URL
+        // =================================================
 
-        <div class="form-group">
+        const SCRIPT_URL =
+            "https://script.google.com/macros/s/AKfycbyg2L-lgpy3IHEQoG_wEFPCB8Q53CXwoiRxSmFh3g2IFFvFHSJDT415tJBqyg1biFc/exec";
 
-            <label for="name">
-                Full Name
-            </label>
 
-            <input
-                type="text"
-                id="name"
-                placeholder="Enter your full name"
-                required
-            >
+        // =================================================
+        // GET HTML ELEMENTS
+        // =================================================
 
-        </div>
+        const form =
+            document.getElementById("joinForm");
 
 
-        <!-- EMAIL -->
+        const submitButton =
+            document.getElementById("submitButton");
 
-        <div class="form-group">
 
-            <label for="email">
-                Email Address
-            </label>
+        const message =
+            document.getElementById("message");
 
-            <input
-                type="email"
-                id="email"
-                placeholder="Enter your email address"
-                required
-            >
 
-        </div>
+        const responseFrame =
+            document.getElementById("responseFrame");
 
 
-        <!-- MOBILE -->
+        // =================================================
+        // SET APPS SCRIPT URL
+        // =================================================
 
-        <div class="form-group">
+        form.action = SCRIPT_URL;
 
-            <label for="mobile">
-                Mobile Number
-            </label>
 
-            <input
-                type="tel"
-                id="mobile"
-                placeholder="Enter 10 digit mobile number"
-                maxlength="10"
-                pattern="[0-9]{10}"
-                required
-            >
+        // =================================================
+        // FORM SUBMISSION
+        // =================================================
 
-        </div>
+        form.addEventListener(
+            "submit",
+            function(event) {
 
+                // Browser's required/pattern validation
+                // will happen automatically.
 
-        <!-- REASON -->
+                submitButton.disabled = true;
 
-        <div class="form-group">
+                submitButton.innerText =
+                    "Submitting...";
 
-            <label for="reason">
-                Reason for Joining Us
-            </label>
 
-            <textarea
-                id="reason"
-                placeholder="Tell us why you want to join us..."
-                required
-            ></textarea>
+                message.style.display =
+                    "none";
 
-        </div>
+                message.className = "";
 
+            }
+        );
 
-        <!-- SUBMIT -->
 
-        <button
-            type="submit"
-            id="submitButton"
-        >
-            Submit Application
-        </button>
+        // =================================================
+        // RECEIVE RESPONSE FROM APPS SCRIPT
+        // =================================================
 
+        window.addEventListener(
+            "message",
+            function(event) {
 
-        <!-- MESSAGE -->
+                const data = event.data;
 
-        <div id="message"></div>
 
+                // Make sure this is our response.
+                if (!data) {
+                    return;
+                }
 
-    </form>
 
+                // -----------------------------------------
+                // DUPLICATE EMAIL
+                // -----------------------------------------
 
-</div>
+                if (
+                    data.alreadySubmitted === true
+                ) {
 
+                    message.className =
+                        "already";
 
-<script>
+                    message.innerText =
+                        "Already submitted the form with this email address.";
 
+                    message.style.display =
+                        "block";
 
-// =====================================================
-// PUT YOUR APPS SCRIPT WEB APP URL HERE
-// =====================================================
 
-const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbyg2L-lgpy3IHEQoG_wEFPCB8Q53CXwoiRxSmFh3g2IFFvFHSJDT415tJBqyg1biFc/exec";
+                    submitButton.disabled =
+                        false;
 
+                    submitButton.innerText =
+                        "Submit Application";
 
-// =====================================================
-// ELEMENTS
-// =====================================================
 
-const form =
-    document.getElementById("joinForm");
+                    return;
+                }
 
-const submitButton =
-    document.getElementById("submitButton");
 
-const message =
-    document.getElementById("message");
+                // -----------------------------------------
+                // SUCCESS
+                // -----------------------------------------
 
+                if (
+                    data.success === true
+                ) {
 
-// =====================================================
-// SHOW MESSAGE
-// =====================================================
+                    message.className =
+                        "success";
 
-function showMessage(
-    text,
-    type
-) {
+                    message.innerText =
+                        data.message ||
+                        "Form submitted successfully!";
 
-    message.innerText = text;
+                    message.style.display =
+                        "block";
 
-    message.className = type;
 
-    message.style.display = "block";
+                    // Clear form after successful submission.
+                    form.reset();
 
-}
 
+                    submitButton.disabled =
+                        false;
 
-// =====================================================
-// CHECK EMAIL FIRST
-// =====================================================
+                    submitButton.innerText =
+                        "Submit Application";
 
-async function checkEmail(email) {
 
-    const checkURL =
-        SCRIPT_URL +
-        "?email=" +
-        encodeURIComponent(email);
+                    return;
+                }
 
 
-    const response =
-        await fetch(checkURL);
+                // -----------------------------------------
+                // ERROR
+                // -----------------------------------------
 
+                message.className =
+                    "error";
 
-    const result =
-        await response.json();
+                message.innerText =
+                    data.message ||
+                    "Something went wrong. Please try again.";
 
-
-    return result;
-
-}
-
-
-// =====================================================
-// FORM SUBMIT
-// =====================================================
-
-form.addEventListener(
-    "submit",
-    async function(event) {
-
-        event.preventDefault();
-
-
-        // ---------------------------------------------
-        // GET VALUES
-        // ---------------------------------------------
-
-        const name =
-            document
-                .getElementById("name")
-                .value
-                .trim();
-
-
-        const email =
-            document
-                .getElementById("email")
-                .value
-                .trim()
-                .toLowerCase();
-
-
-        const mobile =
-            document
-                .getElementById("mobile")
-                .value
-                .trim();
-
-
-        const reason =
-            document
-                .getElementById("reason")
-                .value
-                .trim();
-
-
-        // ---------------------------------------------
-        // BUTTON
-        // ---------------------------------------------
-
-        submitButton.disabled = true;
-
-        submitButton.innerText =
-            "Checking email...";
-
-
-        message.style.display =
-            "none";
-
-
-        try {
-
-
-            // =========================================
-            // STEP 1: CHECK EMAIL
-            // =========================================
-
-            const checkResult =
-                await checkEmail(email);
-
-
-            // -----------------------------------------
-            // EMAIL ALREADY EXISTS
-            // -----------------------------------------
-
-            if (
-                checkResult.alreadySubmitted === true
-            ) {
-
-                showMessage(
-                    "Already submitted the form with this email address.",
-                    "already"
-                );
+                message.style.display =
+                    "block";
 
 
                 submitButton.disabled =
                     false;
 
-
                 submitButton.innerText =
                     "Submit Application";
 
-
-                return;
-
             }
+        );
 
 
-            // =========================================
-            // STEP 2: SUBMIT FORM
-            // =========================================
-
-            submitButton.innerText =
-                "Submitting...";
-
-
-            const formData =
-                new URLSearchParams();
-
-
-            formData.append(
-                "name",
-                name
-            );
-
-
-            formData.append(
-                "email",
-                email
-            );
-
-
-            formData.append(
-                "mobile",
-                mobile
-            );
-
-
-            formData.append(
-                "reason",
-                reason
-            );
-
-
-            // -----------------------------------------
-            // SEND TO APPS SCRIPT
-            // -----------------------------------------
-
-            const response =
-                await fetch(
-                    SCRIPT_URL,
-                    {
-
-                        method: "POST",
-
-                        headers: {
-
-                            "Content-Type":
-                                "application/x-www-form-urlencoded"
-
-                        },
-
-                        body:
-                            formData.toString()
-
-                    }
-                );
-
-
-            const result =
-                await response.json();
-
-
-            // =========================================
-            // DUPLICATE
-            // =========================================
-
-            if (
-                result.message &&
-                result.message.includes(
-                    "Already submitted"
-                )
-            ) {
-
-                showMessage(
-                    "Already submitted the form with this email address.",
-                    "already"
-                );
-
-
-                return;
-
-            }
-
-
-            // =========================================
-            // SUCCESS
-            // =========================================
-
-            if (
-                result.success === true
-            ) {
-
-                showMessage(
-                    "Form submitted successfully! A confirmation email has been sent to you.",
-                    "success"
-                );
-
-
-                form.reset();
-
-
-                return;
-
-            }
-
-
-            // =========================================
-            // ERROR
-            // =========================================
-
-            showMessage(
-                result.message ||
-                "Something went wrong. Please try again.",
-                "error"
-            );
-
-
-        } catch (error) {
-
-
-            console.error(error);
-
-
-            showMessage(
-                "Unable to connect to the server. Please try again.",
-                "error"
-            );
-
-
-        } finally {
-
-
-            submitButton.disabled =
-                false;
-
-
-            submitButton.innerText =
-                "Submit Application";
-
-        }
-
-    }
-);
-
-</script>
+    </script>
 
 
 </body>
