@@ -1,650 +1,554 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>Join Our Community</title>
+<title>Join Our Community</title>
 
 
-    <style>
+<style>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* =====================================================
+   BASIC RESET
+   ===================================================== */
 
+* {
 
-        body {
+    margin: 0;
 
-            min-height: 100vh;
+    padding: 0;
 
-            font-family:
-                Inter,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Arial,
-                sans-serif;
+    box-sizing: border-box;
 
-            background:
-                radial-gradient(
-                    circle at 10% 20%,
-                    rgba(99, 102, 241, 0.35),
-                    transparent 35%
-                ),
-                radial-gradient(
-                    circle at 90% 80%,
-                    rgba(139, 92, 246, 0.35),
-                    transparent 35%
-                ),
-                linear-gradient(
-                    135deg,
-                    #0f172a,
-                    #1e1b4b
-                );
+}
 
-            display: flex;
 
-            justify-content: center;
+body {
 
-            align-items: center;
+    min-height: 100vh;
 
-            padding: 30px;
+    font-family:
 
-            overflow-x: hidden;
+        Inter,
 
-        }
+        -apple-system,
 
+        BlinkMacSystemFont,
 
-        /* =========================================
-           BACKGROUND DECORATIONS
-           ========================================= */
+        "Segoe UI",
 
-        body::before {
+        Roboto,
 
-            content: "";
+        Arial,
 
-            position: fixed;
+        sans-serif;
 
-            width: 350px;
+    display: flex;
 
-            height: 350px;
+    justify-content: center;
 
-            border-radius: 50%;
+    align-items: center;
 
-            background:
-                rgba(99, 102, 241, 0.12);
+    padding: 25px;
 
-            filter: blur(60px);
+    background:
 
-            top: -100px;
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(99,102,241,0.25),
+            transparent 35%
+        ),
 
-            left: -100px;
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(139,92,246,0.25),
+            transparent 35%
+        ),
 
-            pointer-events: none;
+        linear-gradient(
+            135deg,
+            #111827,
+            #1e1b4b
+        );
 
-        }
+}
 
 
-        body::after {
+/* =====================================================
+   CARD
+   ===================================================== */
 
-            content: "";
+.card {
 
-            position: fixed;
+    width: 100%;
 
-            width: 350px;
+    max-width: 600px;
 
-            height: 350px;
+    background: rgba(255,255,255,0.98);
 
-            border-radius: 50%;
+    border-radius: 28px;
 
-            background:
-                rgba(168, 85, 247, 0.12);
+    padding: 42px;
 
-            filter: blur(60px);
+    box-shadow:
 
-            bottom: -100px;
+        0 30px 80px
+        rgba(0,0,0,0.35);
 
-            right: -100px;
+    animation: appear 0.6s ease;
 
-            pointer-events: none;
+}
 
-        }
 
+@keyframes appear {
 
-        /* =========================================
-           MAIN CARD
-           ========================================= */
+    from {
 
-        .card {
+        opacity: 0;
 
-            position: relative;
+        transform:
+            translateY(25px);
 
-            width: 100%;
+    }
 
-            max-width: 600px;
+    to {
 
-            background:
-                rgba(255, 255, 255, 0.97);
+        opacity: 1;
 
-            border-radius: 28px;
+        transform:
+            translateY(0);
 
-            padding: 42px;
+    }
 
-            box-shadow:
-                0 30px 80px
-                rgba(0, 0, 0, 0.35);
+}
 
-            animation:
-                cardAppear 0.7s ease;
 
-        }
+/* =====================================================
+   HEADING
+   ===================================================== */
 
+.heading {
 
-        @keyframes cardAppear {
+    text-align: center;
 
-            from {
+    margin-bottom: 35px;
 
-                opacity: 0;
+}
 
-                transform:
-                    translateY(25px)
-                    scale(0.97);
 
-            }
+.heading h1 {
 
-            to {
+    font-size: 34px;
 
-                opacity: 1;
+    font-weight: 800;
 
-                transform:
-                    translateY(0)
-                    scale(1);
+    color: #111827;
 
-            }
+    margin-bottom: 10px;
 
-        }
+}
 
 
-        /* =========================================
-           TOP ICON
-           ========================================= */
+.heading p {
 
-        .icon {
+    font-size: 15px;
 
-            width: 70px;
+    line-height: 1.6;
 
-            height: 70px;
+    color: #6b7280;
 
-            margin: 0 auto 20px;
+}
 
-            border-radius: 20px;
 
-            display: flex;
+/* =====================================================
+   FORM
+   ===================================================== */
 
-            align-items: center;
+.form-group {
 
-            justify-content: center;
+    margin-bottom: 21px;
 
-            font-size: 32px;
+}
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #6366f1,
-                    #8b5cf6
-                );
 
-            color: white;
+label {
 
-            box-shadow:
-                0 12px 30px
-                rgba(99, 102, 241, 0.35);
+    display: block;
 
-        }
+    margin-bottom: 8px;
 
+    font-size: 14px;
 
-        /* =========================================
-           HEADING
-           ========================================= */
+    font-weight: 700;
 
-        .heading {
+    color: #1f2937;
 
-            text-align: center;
+}
 
-            margin-bottom: 32px;
 
-        }
+.required {
 
+    color: #ef4444;
 
-        .heading h1 {
+}
 
-            font-size: 34px;
 
-            font-weight: 800;
+.input-wrapper {
 
-            color: #111827;
+    position: relative;
 
-            letter-spacing: -0.8px;
+}
 
-            margin-bottom: 9px;
 
-        }
+.input-icon {
 
+    position: absolute;
 
-        .heading p {
+    left: 15px;
 
-            font-size: 15px;
+    top: 50%;
 
-            line-height: 1.6;
+    transform: translateY(-50%);
 
-            color: #6b7280;
+    font-size: 17px;
 
-        }
+    color: #6b7280;
 
+    pointer-events: none;
 
-        /* =========================================
-           FORM
-           ========================================= */
+}
 
-        .form-group {
 
-            margin-bottom: 20px;
+input,
+textarea {
 
-        }
+    width: 100%;
 
+    border: 1.5px solid #e5e7eb;
 
-        label {
+    border-radius: 13px;
 
-            display: block;
+    background: #f9fafb;
 
-            margin-bottom: 8px;
+    color: #111827;
 
-            color: #1f2937;
+    font-size: 15px;
 
-            font-size: 14px;
+    outline: none;
 
-            font-weight: 700;
+    transition: all 0.25s ease;
 
-        }
+}
 
 
-        .input-wrapper {
+input {
 
-            position: relative;
+    height: 48px;
 
-        }
+    padding:
+        0 15px 0 44px;
 
+}
 
-        .input-icon {
 
-            position: absolute;
+textarea {
 
-            left: 15px;
+    min-height: 130px;
 
-            top: 50%;
+    padding: 14px 15px;
 
-            transform:
-                translateY(-50%);
+    resize: vertical;
 
-            font-size: 17px;
+    line-height: 1.6;
 
-            color: #9ca3af;
+}
 
-            pointer-events: none;
 
-        }
+input::placeholder,
+textarea::placeholder {
 
+    color: #9ca3af;
 
-        input,
-        textarea {
+}
 
-            width: 100%;
 
-            border: 1.5px solid #e5e7eb;
+input:focus,
+textarea:focus {
 
-            background: #f9fafb;
+    background: white;
 
-            border-radius: 13px;
+    border-color: #6366f1;
 
-            padding: 14px 16px;
+    box-shadow:
 
-            font-size: 15px;
+        0 0 0 4px
+        rgba(99,102,241,0.10);
 
-            color: #111827;
+}
 
-            outline: none;
 
-            transition:
-                border 0.25s ease,
-                box-shadow 0.25s ease,
-                background 0.25s ease;
+/* =====================================================
+   SUBMIT BUTTON
+   ===================================================== */
 
-        }
+.submit-btn {
 
+    width: 100%;
 
-        input {
+    height: 52px;
 
-            padding-left: 44px;
+    border: none;
 
-        }
+    border-radius: 13px;
 
+    background:
 
-        textarea {
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #7c3aed
+        );
 
-            min-height: 130px;
+    color: white;
 
-            resize: vertical;
+    font-size: 16px;
 
-            line-height: 1.6;
+    font-weight: 700;
 
-        }
+    cursor: pointer;
 
+    box-shadow:
 
-        input::placeholder,
-        textarea::placeholder {
+        0 10px 25px
+        rgba(99,102,241,0.30);
 
-            color: #9ca3af;
+    transition: all 0.2s ease;
 
-        }
+}
 
 
-        input:focus,
-        textarea:focus {
+.submit-btn:hover {
 
-            border-color: #6366f1;
+    transform:
+        translateY(-2px);
 
-            background: #ffffff;
+    box-shadow:
 
-            box-shadow:
-                0 0 0 4px
-                rgba(99, 102, 241, 0.10);
+        0 15px 30px
+        rgba(99,102,241,0.40);
 
-        }
+}
 
 
-        /* =========================================
-           SUBMIT BUTTON
-           ========================================= */
+.submit-btn:disabled {
 
-        .submit-btn {
+    cursor: not-allowed;
 
-            width: 100%;
+    opacity: 0.75;
 
-            border: none;
+    transform: none;
 
-            border-radius: 13px;
+}
 
-            padding: 16px;
 
-            margin-top: 5px;
+/* =====================================================
+   LOADING
+   ===================================================== */
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #6366f1,
-                    #7c3aed
-                );
+.loading {
 
-            color: white;
+    display: none;
 
-            font-size: 16px;
+    align-items: center;
 
-            font-weight: 750;
+    justify-content: center;
 
-            cursor: pointer;
+    gap: 10px;
 
-            box-shadow:
-                0 10px 25px
-                rgba(99, 102, 241, 0.30);
+}
 
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease,
-                opacity 0.2s ease;
 
-        }
+.spinner {
 
+    width: 18px;
 
-        .submit-btn:hover {
+    height: 18px;
 
-            transform:
-                translateY(-2px);
+    border-radius: 50%;
 
-            box-shadow:
-                0 15px 30px
-                rgba(99, 102, 241, 0.38);
+    border:
 
-        }
+        2px solid
+        rgba(255,255,255,0.4);
 
+    border-top-color: white;
 
-        .submit-btn:active {
+    animation:
 
-            transform:
-                translateY(0);
+        spin 0.8s linear infinite;
 
-        }
+}
 
 
-        .submit-btn:disabled {
+@keyframes spin {
 
-            opacity: 0.65;
+    to {
 
-            cursor: not-allowed;
+        transform:
+            rotate(360deg);
 
-            transform: none;
+    }
 
-        }
+}
 
 
-        /* =========================================
-           LOADING
-           ========================================= */
+/* =====================================================
+   MESSAGE
+   ===================================================== */
 
-        .loading {
+#message {
 
-            display: none;
+    display: none;
 
-            align-items: center;
+    margin-top: 18px;
 
-            justify-content: center;
+    padding: 15px;
 
-            gap: 10px;
+    border-radius: 12px;
 
-        }
+    font-size: 14px;
 
+    line-height: 1.5;
 
-        .spinner {
+    text-align: center;
 
-            width: 18px;
+    font-weight: 600;
 
-            height: 18px;
+}
 
-            border: 2px solid
-                rgba(255,255,255,0.4);
 
-            border-top-color: white;
+/* SUCCESS */
 
-            border-radius: 50%;
+.success {
 
-            animation:
-                spin 0.8s linear infinite;
+    display: block !important;
 
-        }
+    background: #ecfdf5;
 
+    color: #047857;
 
-        @keyframes spin {
+    border:
+        1px solid #a7f3d0;
 
-            to {
+}
 
-                transform:
-                    rotate(360deg);
 
-            }
+/* ALREADY SUBMITTED */
 
-        }
+.already {
 
+    display: block !important;
 
-        /* =========================================
-           MESSAGE
-           ========================================= */
+    background: #fffbeb;
 
-        #message {
+    color: #92400e;
 
-            display: none;
+    border:
+        1px solid #fde68a;
 
-            margin-top: 18px;
+}
 
-            padding: 14px 16px;
 
-            border-radius: 12px;
+/* ERROR */
 
-            font-size: 14px;
+.error {
 
-            line-height: 1.5;
+    display: block !important;
 
-            text-align: center;
+    background: #fef2f2;
 
-            font-weight: 600;
+    color: #b91c1c;
 
-        }
+    border:
+        1px solid #fecaca;
 
+}
 
-        .success {
 
-            display: block !important;
+/* =====================================================
+   FOOTER
+   ===================================================== */
 
-            background: #ecfdf5;
+.footer {
 
-            color: #047857;
+    text-align: center;
 
-            border:
-                1px solid #a7f3d0;
+    margin-top: 20px;
 
-        }
+    font-size: 12px;
 
+    color: #9ca3af;
 
-        .error {
+}
 
-            display: block !important;
 
-            background: #fef2f2;
+/* =====================================================
+   MOBILE
+   ===================================================== */
 
-            color: #b91c1c;
+@media(max-width:650px) {
 
-            border:
-                1px solid #fecaca;
+    body {
 
-        }
+        padding: 15px;
 
+    }
 
-        .already {
 
-            display: block !important;
+    .card {
 
-            background: #fffbeb;
+        padding: 30px 22px;
 
-            color: #92400e;
+        border-radius: 22px;
 
-            border:
-                1px solid #fde68a;
+    }
 
-        }
 
+    .heading h1 {
 
-        /* =========================================
-           FOOTER
-           ========================================= */
+        font-size: 29px;
 
-        .footer {
+    }
 
-            text-align: center;
+}
 
-            margin-top: 22px;
 
-            color: #9ca3af;
+@media(max-width:400px) {
 
-            font-size: 12px;
+    .card {
 
-        }
+        padding: 25px 18px;
 
+    }
 
-        .required {
 
-            color: #ef4444;
+    .heading h1 {
 
-        }
+        font-size: 26px;
 
+    }
 
-        /* =========================================
-           MOBILE
-           ========================================= */
+}
 
-        @media (max-width: 650px) {
-
-            body {
-
-                padding: 15px;
-
-            }
-
-
-            .card {
-
-                padding: 30px 22px;
-
-                border-radius: 22px;
-
-            }
-
-
-            .heading h1 {
-
-                font-size: 29px;
-
-            }
-
-
-            .icon {
-
-                width: 62px;
-
-                height: 62px;
-
-                font-size: 28px;
-
-            }
-
-        }
-
-
-        @media (max-width: 400px) {
-
-            .card {
-
-                padding: 25px 18px;
-
-            }
-
-
-            .heading h1 {
-
-                font-size: 26px;
-
-            }
-
-        }
-
-    </style>
+</style>
 
 </head>
 
@@ -652,411 +556,516 @@
 <body>
 
 
-    <div class="card">
+<div class="card">
 
 
-        <!-- ICON -->
+    <!-- =============================================
+         HEADING
+         ============================================= -->
 
-        <div class="icon">
-            ✦
-        </div>
+    <div class="heading">
 
+        <h1>
+            Join Our Community
+        </h1>
 
-        <!-- HEADING -->
-
-        <div class="heading">
-
-            <h1>
-                Join Our Community
-            </h1>
-
-            <p>
-                Become a part of our community.
-                Fill in your details below and
-                we'll get in touch with you.
-            </p>
-
-        </div>
-
-
-        <!-- =====================================
-             FORM
-             ===================================== -->
-
-        <form
-            id="joinForm"
-            method="POST"
-            target="hiddenFrame"
-        >
-
-
-            <!-- NAME -->
-
-            <div class="form-group">
-
-                <label for="name">
-                    Full Name
-                    <span class="required">*</span>
-                </label>
-
-                <div class="input-wrapper">
-
-                    <span class="input-icon">
-                        👤
-                    </span>
-
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Enter your full name"
-                        autocomplete="name"
-                        required
-                    >
-
-                </div>
-
-            </div>
-
-
-            <!-- EMAIL -->
-
-            <div class="form-group">
-
-                <label for="email">
-                    Email Address
-                    <span class="required">*</span>
-                </label>
-
-                <div class="input-wrapper">
-
-                    <span class="input-icon">
-                        ✉
-                    </span>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email address"
-                        autocomplete="email"
-                        required
-                    >
-
-                </div>
-
-            </div>
-
-
-            <!-- MOBILE -->
-
-            <div class="form-group">
-
-                <label for="mobile">
-                    Mobile Number
-                    <span class="required">*</span>
-                </label>
-
-                <div class="input-wrapper">
-
-                    <span class="input-icon">
-                        📱
-                    </span>
-
-                    <input
-                        type="tel"
-                        id="mobile"
-                        name="mobile"
-                        placeholder="Enter 10 digit mobile number"
-                        maxlength="10"
-                        pattern="[0-9]{10}"
-                        inputmode="numeric"
-                        autocomplete="tel"
-                        required
-                    >
-
-                </div>
-
-            </div>
-
-
-            <!-- REASON -->
-
-            <div class="form-group">
-
-                <label for="reason">
-                    Why do you want to join us?
-                    <span class="required">*</span>
-                </label>
-
-                <textarea
-                    id="reason"
-                    name="reason"
-                    placeholder="Tell us a little about why you want to join our community..."
-                    required
-                ></textarea>
-
-            </div>
-
-
-            <!-- BUTTON -->
-
-            <button
-                type="submit"
-                class="submit-btn"
-                id="submitButton"
-            >
-
-                <span id="buttonText">
-                    Submit Application
-                </span>
-
-                <span
-                    class="loading"
-                    id="loading"
-                >
-
-                    <span class="spinner"></span>
-
-                    Submitting...
-
-                </span>
-
-            </button>
-
-
-            <!-- MESSAGE -->
-
-            <div id="message"></div>
-
-
-        </form>
-
-
-        <div class="footer">
-
-            🔒 Your information is securely submitted.
-
-        </div>
-
+        <p>
+            Become a part of our community.
+            Fill in your details below and
+            we'll get in touch with you.
+        </p>
 
     </div>
 
 
-    <!-- =========================================
-         HIDDEN IFRAME
+    <!-- =============================================
+         FORM
+         ============================================= -->
 
-         This prevents the external website from
-         opening the Apps Script page.
-         ========================================= -->
+    <form
+        id="joinForm"
+        method="POST"
+        target="hiddenFrame"
+    >
 
-    <iframe
-        name="hiddenFrame"
-        id="hiddenFrame"
-        style="
-            display:none;
-            width:0;
-            height:0;
-            border:0;
-        "
-    ></iframe>
 
+        <!-- NAME -->
 
-    <script>
+        <div class="form-group">
 
+            <label for="name">
 
-        // =================================================
-        // YOUR GOOGLE APPS SCRIPT WEB APP URL
-        // =================================================
+                Full Name
 
-        const SCRIPT_URL =
-            "https://script.google.com/macros/s/AKfycbyg2L-lgpy3IHEQoG_wEFPCB8Q53CXwoiRxSmFh3g2IFFvFHSJDT415tJBqyg1biFc/exec";
+                <span class="required">*</span>
 
+            </label>
 
-        // =================================================
-        // ELEMENTS
-        // =================================================
 
-        const form =
-            document.getElementById("joinForm");
+            <div class="input-wrapper">
 
+                <span class="input-icon">
+                    👤
+                </span>
 
-        const submitButton =
-            document.getElementById("submitButton");
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required
+                >
 
+            </div>
 
-        const buttonText =
-            document.getElementById("buttonText");
+        </div>
 
 
-        const loading =
-            document.getElementById("loading");
+        <!-- EMAIL -->
 
+        <div class="form-group">
 
-        const message =
-            document.getElementById("message");
+            <label for="email">
 
+                Email Address
 
-        // =================================================
-        // CONNECT FORM TO GOOGLE APPS SCRIPT
-        // =================================================
+                <span class="required">*</span>
 
-        form.action = SCRIPT_URL;
+            </label>
 
 
-        // =================================================
-        // SUBMIT
-        // =================================================
+            <div class="input-wrapper">
 
-        form.addEventListener(
-            "submit",
-            function () {
+                <span class="input-icon">
+                    ✉
+                </span>
 
-                // Hide old message
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email address"
+                    required
+                >
 
-                message.style.display =
-                    "none";
+            </div>
 
-                message.className = "";
+        </div>
 
 
-                // Disable button
+        <!-- MOBILE -->
 
-                submitButton.disabled =
-                    true;
+        <div class="form-group">
 
+            <label for="mobile">
 
-                // Show loading
+                Mobile Number
 
-                buttonText.style.display =
-                    "none";
+                <span class="required">*</span>
 
-                loading.style.display =
-                    "flex";
+            </label>
 
-            }
-        );
 
+            <div class="input-wrapper">
 
-        // =================================================
-        // RECEIVE RESPONSE FROM GOOGLE APPS SCRIPT
-        // =================================================
+                <span class="input-icon">
+                    📱
+                </span>
 
-        window.addEventListener(
-            "message",
-            function (event) {
+                <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    placeholder="Enter 10 digit mobile number"
+                    maxlength="10"
+                    pattern="[0-9]{10}"
+                    inputmode="numeric"
+                    required
+                >
 
-                const data =
-                    event.data;
+            </div>
 
+        </div>
 
-                if (!data) {
 
-                    return;
+        <!-- REASON -->
 
-                }
+        <div class="form-group">
 
+            <label for="reason">
 
-                // -----------------------------------------
-                // DUPLICATE EMAIL
-                // -----------------------------------------
+                Why do you want to join us?
 
-                if (
-                    data.alreadySubmitted === true
-                ) {
+                <span class="required">*</span>
 
-                    message.className =
-                        "already";
+            </label>
 
-                    message.innerText =
-                        "⚠️ This email has already been used to submit the form.";
 
-                    message.style.display =
-                        "block";
+            <textarea
+                id="reason"
+                name="reason"
+                placeholder="Tell us a little about why you want to join our community..."
+                required
+            ></textarea>
 
+        </div>
 
-                    resetButton();
 
+        <!-- SUBMIT BUTTON -->
 
-                    return;
+        <button
+            type="submit"
+            class="submit-btn"
+            id="submitButton"
+        >
 
-                }
+            <span id="buttonText">
+                Submit Application
+            </span>
 
 
-                // -----------------------------------------
-                // SUCCESS
-                // -----------------------------------------
+            <span
+                class="loading"
+                id="loading"
+            >
 
-                if (
-                    data.success === true
-                ) {
+                <span class="spinner"></span>
 
-                    message.className =
-                        "success";
+                Submitting...
 
-                    message.innerText =
-                        "✓ Application submitted successfully! A confirmation email has been sent to you.";
+            </span>
 
-                    message.style.display =
-                        "block";
+        </button>
 
 
-                    form.reset();
+        <!-- MESSAGE -->
 
+        <div id="message"></div>
 
-                    resetButton();
 
+    </form>
 
-                    return;
 
-                }
+    <div class="footer">
 
+        🔒 Your information is securely submitted.
 
-                // -----------------------------------------
-                // ERROR
-                // -----------------------------------------
+    </div>
 
-                message.className =
-                    "error";
 
-                message.innerText =
-                    "⚠️ " +
-                    (
-                        data.message ||
-                        "Something went wrong. Please try again."
-                    );
+</div>
 
-                message.style.display =
-                    "block";
 
+<!-- =================================================
+     HIDDEN IFRAME
+     ================================================= -->
 
-                resetButton();
+<iframe
+    name="hiddenFrame"
+    id="hiddenFrame"
+    style="
+        display:none;
+        width:0;
+        height:0;
+        border:0;
+    "
+></iframe>
 
-            }
-        );
 
+<script>
 
-        // =================================================
-        // RESET BUTTON
-        // =================================================
 
-        function resetButton() {
+// =====================================================
+// YOUR GOOGLE APPS SCRIPT WEB APP URL
+// =====================================================
 
-            submitButton.disabled =
-                false;
+const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbyg2L-lgpy3IHEQoG_wEFPCB8Q53CXwoiRxSmFh3g2IFFvFHSJDT415tJBqyg1biFc/exec";
 
 
-            buttonText.style.display =
-                "inline";
+// =====================================================
+// ELEMENTS
+// =====================================================
 
+const form =
+    document.getElementById("joinForm");
 
-            loading.style.display =
-                "none";
+
+const submitButton =
+    document.getElementById("submitButton");
+
+
+const buttonText =
+    document.getElementById("buttonText");
+
+
+const loading =
+    document.getElementById("loading");
+
+
+const message =
+    document.getElementById("message");
+
+
+const hiddenFrame =
+    document.getElementById("hiddenFrame");
+
+
+// =====================================================
+// CONNECT FORM
+// =====================================================
+
+form.action = SCRIPT_URL;
+
+
+// =====================================================
+// FORM SUBMIT
+// =====================================================
+
+form.addEventListener(
+    "submit",
+    function () {
+
+
+        // Hide previous message
+
+        message.style.display =
+            "none";
+
+        message.className = "";
+
+
+        // Disable button
+
+        submitButton.disabled =
+            true;
+
+
+        // Show loading
+
+        buttonText.style.display =
+            "none";
+
+        loading.style.display =
+            "flex";
+
+
+        // Start timeout
+
+        startTimeout();
+
+    }
+);
+
+
+// =====================================================
+// RECEIVE RESPONSE FROM APPS SCRIPT
+// =====================================================
+
+window.addEventListener(
+    "message",
+    function (event) {
+
+
+        const data =
+            event.data;
+
+
+        // Ignore unrelated messages
+
+        if (
+            !data ||
+            typeof data !== "object"
+        ) {
+
+            return;
 
         }
 
 
-    </script>
+        // =============================================
+        // SUCCESS
+        // =============================================
+
+        if (
+            data.success === true
+        ) {
+
+
+            showMessage(
+                "✓ " +
+                data.message,
+                "success"
+            );
+
+
+            form.reset();
+
+
+            resetButton();
+
+
+            stopTimeout();
+
+
+            return;
+
+        }
+
+
+        // =============================================
+        // ALREADY SUBMITTED
+        // =============================================
+
+        if (
+            data.alreadySubmitted === true
+        ) {
+
+
+            showMessage(
+                "⚠️ " +
+                data.message,
+                "already"
+            );
+
+
+            resetButton();
+
+
+            stopTimeout();
+
+
+            return;
+
+        }
+
+
+        // =============================================
+        // ERROR
+        // =============================================
+
+        showMessage(
+            "⚠️ " +
+            (
+                data.message ||
+                "Something went wrong. Please try again."
+            ),
+            "error"
+        );
+
+
+        resetButton();
+
+
+        stopTimeout();
+
+    }
+);
+
+
+// =====================================================
+// SHOW MESSAGE
+// =====================================================
+
+function showMessage(
+    text,
+    type
+) {
+
+    message.innerText =
+        text;
+
+
+    message.className =
+        type;
+
+
+    message.style.display =
+        "block";
+
+
+    // Scroll message into view
+
+    setTimeout(
+        function () {
+
+            message.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+
+        },
+        100
+    );
+
+}
+
+
+// =====================================================
+// RESET BUTTON
+// =====================================================
+
+function resetButton() {
+
+    submitButton.disabled =
+        false;
+
+
+    buttonText.style.display =
+        "inline";
+
+
+    loading.style.display =
+        "none";
+
+}
+
+
+// =====================================================
+// TIMEOUT
+// =====================================================
+
+let timeoutID = null;
+
+
+function startTimeout() {
+
+    stopTimeout();
+
+
+    timeoutID = setTimeout(
+        function () {
+
+
+            showMessage(
+                "Unable to get a response from the server. Please check your internet connection and try again.",
+                "error"
+            );
+
+
+            resetButton();
+
+
+        },
+        20000
+    );
+
+}
+
+
+function stopTimeout() {
+
+    if (timeoutID) {
+
+        clearTimeout(timeoutID);
+
+        timeoutID = null;
+
+    }
+
+}
+
+</script>
 
 
 </body>
